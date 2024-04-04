@@ -1,0 +1,15 @@
+header {
+  margin: 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100vw;
+  min-height: 5em;
+  background-color: cadetblue;
+  font-family: $fontRegular;
+  line-height: 1.5;
+  font-weight: 400;
+}

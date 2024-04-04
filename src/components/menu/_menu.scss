@@ -1,0 +1,15 @@
+.menu {
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    li {
+      font-weight: 400;
+      font-family: $fontRegular;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+  }
+}
