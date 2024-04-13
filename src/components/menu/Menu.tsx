@@ -10,7 +10,7 @@ const Menu = ({ menu, onSelect }: MenuPropsType) => {
       <ul>
         {menu.map((m) => (
           <li key={m.name} onClick={() => onSelect(m)}>
-            {m.name}
+            <h2>{m.name}</h2>
           </li>
         ))}
       </ul>

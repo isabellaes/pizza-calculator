@@ -1,0 +1,11 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style-type: none;
+}
+
+.list-item {
+  padding: 1em;
+  border: 1px solid black;
+}

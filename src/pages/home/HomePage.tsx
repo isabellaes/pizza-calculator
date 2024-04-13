@@ -9,13 +9,24 @@ const HomePage = () => {
   const { state } = useContext(MenuContext);
   const [selectedMenu, setSelectedMenu] = useState(state[0]);
   const [selectedProduct, setSelectedProduct] = useState({} as Product);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="home-container">
-      <h1>HomePage</h1>
       <Menu menu={state} onSelect={setSelectedMenu}></Menu>
-      <List menu={selectedMenu} setSelected={setSelectedProduct}></List>
-      {selectedProduct ? <Modal product={selectedProduct}></Modal> : <></>}
+      <List
+        menu={selectedMenu}
+        setSelected={setSelectedProduct}
+        setModalOpen={setModalOpen}
+      ></List>
+      {modalOpen ? (
+        <Modal
+          handleClose={() => setModalOpen(false)}
+          product={selectedProduct}
+        ></Modal>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
