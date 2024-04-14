@@ -16,24 +16,30 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
   switch (menu.name) {
     case "Pizza":
       return (
-        <ul>
+        <ul className="content">
           {menu.items.map((i) => (
-            <li
-              key={i.id}
-              onClick={() => {
-                setSelected({
-                  type: "Pizza",
-                  product: i,
-                  toppings: toppings,
-                  soda: sodas,
-                });
-                setModalOpen(true);
-              }}
-            >
+            <li key={i.id}>
               <div className="list-item">
-                <h3>{i.name}</h3>
-                <p>{i.ingredients.join(", ")}</p>
-                <p>{i.price}</p>
+                <div>
+                  <h3>{i.name}</h3>
+                  <p>{i.ingredients.join(", ")}</p>
+                </div>
+                <div className="row">
+                  <p>${i.price}</p>
+                  <button
+                    onClick={() => {
+                      setSelected({
+                        type: "Pizza",
+                        product: i,
+                        toppings: toppings,
+                        soda: sodas,
+                      });
+                      setModalOpen(true);
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
             </li>
           ))}
@@ -42,22 +48,32 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
 
     case "Burger":
       return (
-        <ul>
+        <ul className="content">
           {menu.items.map((i) => (
-            <li
-              key={i.id}
-              onClick={() =>
-                setSelected({
-                  type: "Burger",
-                  product: i,
-                  soda: sodas,
-                })
-              }
-            >
+            <li key={i.id}>
               <div className="list-item">
-                <h3>{i.name}</h3>
-                <p>{i.ingredients.join(", ")}</p>
-                <p>{i.price}</p>
+                <div>
+                  <h3>{i.name}</h3>
+                  <p>{i.ingredients.join(", ")}</p>
+                </div>
+                <div className="row">
+                  <p>${i.price}</p>
+                  <button
+                    onClick={() =>
+                      dispatch({
+                        type: "ADD_CART_ITEM",
+                        payload: {
+                          id: uuid(),
+                          type: "Burger",
+                          product: i,
+                          quantity: 1,
+                        },
+                      })
+                    }
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
             </li>
           ))}
@@ -65,22 +81,32 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
       );
     case "Salad":
       return (
-        <ul>
+        <ul className="content">
           {menu.items.map((i) => (
-            <li
-              key={i.id}
-              onClick={() =>
-                setSelected({
-                  type: "Salad",
-                  product: i,
-                  soda: sodas,
-                })
-              }
-            >
+            <li key={i.id}>
               <div className="list-item">
-                <h3>{i.name}</h3>
-                <p>{i.ingredients.join(", ")}</p>
-                <p>{i.price}</p>
+                <div>
+                  <h3>{i.name}</h3>
+                  <p>{i.ingredients.join(", ")}</p>
+                </div>
+                <div className="row">
+                  <p>${i.price}</p>
+                  <button
+                    onClick={() =>
+                      dispatch({
+                        type: "ADD_CART_ITEM",
+                        payload: {
+                          id: uuid(),
+                          type: "Salad",
+                          product: i,
+                          quantity: 1,
+                        },
+                      })
+                    }
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
             </li>
           ))}
@@ -88,27 +114,29 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
       );
     case "Soda":
       return (
-        <ul>
+        <ul className="content">
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
                 <h3> {i.flavour}</h3>
-                <p>{i.price}</p>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: "ADD_CART_ITEM",
-                      payload: {
-                        id: uuid(),
-                        type: "Soda",
-                        product: i,
-                        quantity: 1,
-                      },
-                    })
-                  }
-                >
-                  Add to cart
-                </button>
+                <div className="row">
+                  <p>${i.price}</p>
+                  <button
+                    onClick={() =>
+                      dispatch({
+                        type: "ADD_CART_ITEM",
+                        payload: {
+                          id: uuid(),
+                          type: "Soda",
+                          product: i,
+                          quantity: 1,
+                        },
+                      })
+                    }
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
             </li>
           ))}
@@ -116,27 +144,29 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
       );
     case "Sides":
       return (
-        <ul>
+        <ul className="content">
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
                 <h3>{i.type}</h3>
-                <p>{i.price}</p>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: "ADD_CART_ITEM",
-                      payload: {
-                        id: uuid(),
-                        type: "Side",
-                        product: i,
-                        quantity: 1,
-                      },
-                    })
-                  }
-                >
-                  Add to cart
-                </button>
+                <div className="row">
+                  <p>${i.price}</p>
+                  <button
+                    onClick={() =>
+                      dispatch({
+                        type: "ADD_CART_ITEM",
+                        payload: {
+                          id: uuid(),
+                          type: "Side",
+                          product: i,
+                          quantity: 1,
+                        },
+                      })
+                    }
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
             </li>
           ))}

@@ -5,7 +5,42 @@ ul {
   list-style-type: none;
 }
 
+.content {
+  margin: 1em;
+  padding: 1.5em;
+  outline: 2px solid orange;
+  border: 2px solid red;
+  border-radius: 10px;
+}
+
 .list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 1em;
-  border: 1px solid black;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.699);
+  min-width: 50vw;
+
+  button {
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    width: 8em;
+    text-decoration: none;
+    border: 1px solid orange;
+    outline: 1px solid orange;
+    background-color: #fac55b;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
