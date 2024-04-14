@@ -39,7 +39,6 @@ const OrderPage = () => {
     });
   }
   const total = calculateTotal();
-  console.log(total);
 
   return (
     <div className="order-container">
@@ -98,6 +97,34 @@ const OrderPage = () => {
                 );
 
               case "Pizza":
+                return (
+                  <div className="item">
+                    <div>
+                      <h2>{i.product.name}</h2>
+                      <p>{i.product.ingredients.join(", ")}</p>
+                      {i.product.extraToppings.map((t) => (
+                        <p className="extra-toppings">- {t.name}</p>
+                      ))}
+                      <p>${i.product.price * i.quantity}</p>
+                    </div>
+
+                    <div className="update-cartitem-btn">
+                      <button onClick={() => handleDecreseQuantity(i.id)}>
+                        <RemoveCircleOutlineIcon></RemoveCircleOutlineIcon>
+                      </button>
+                      <p className="item-quantity"> {i.quantity}</p>
+                      <button onClick={() => handleIncreaseQuantity(i.id)}>
+                        <AddCircleOutlineIcon></AddCircleOutlineIcon>
+                      </button>
+                      <button
+                        className="remove-button"
+                        onClick={() => handleRemoveCartItem(i.id)}
+                      >
+                        <DeleteForeverIcon></DeleteForeverIcon>
+                      </button>
+                    </div>
+                  </div>
+                );
               case "Salad":
               case "Burger":
                 return (

@@ -37,8 +37,20 @@ export type MenuItem =
 export type CartItem =
   | {
       id: string;
-      type: "Pizza" | "Salad" | "Burger";
-      product: Pizza | Burger | Salad;
+      type: "Salad";
+      product: Salad;
+      quantity: number;
+    }
+  | {
+      id: string;
+      type: "Burger";
+      product: Burger;
+      quantity: number;
+    }
+  | {
+      id: string;
+      type: "Pizza";
+      product: Pizza;
       quantity: number;
     }
   | {

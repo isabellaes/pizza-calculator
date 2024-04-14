@@ -14,10 +14,7 @@ export const pizzas: Pizza[] = [
     name: "Veggie Pizza",
     category: "Vego",
     ingredients: ["Mushrooms", "Tomatoes", "Onions"],
-    extraToppings: [
-      { id: 1, name: "Olives", price: 2 },
-      { id: 2, name: "Spinach", price: 3 },
-    ],
+    extraToppings: [],
     price: 12,
     size: "standard",
   },
@@ -26,10 +23,7 @@ export const pizzas: Pizza[] = [
     name: "Pepperoni & Mozarella Pizza",
     category: "Pizza",
     ingredients: ["Pepperoni", "Mozzarella", "Bell Peppers"],
-    extraToppings: [
-      { id: 3, name: "Bacon", price: 4 },
-      { id: 4, name: "Jalapenos", price: 2 },
-    ],
+    extraToppings: [],
     price: 15,
     size: "familj",
   },
