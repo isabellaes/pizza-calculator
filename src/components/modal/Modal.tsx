@@ -11,6 +11,7 @@ export type ModalPropsType = {
 const Modal = ({ product, handleClose }: ModalPropsType) => {
   const { dispatch } = useContext(CartContext);
   const [extraToppings, setExtraToppings] = useState<PizzaTopping[]>([]);
+  const [quantity, setQuantity] = useState(1);
 
   function handleSelectExtraToppings(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.checked) {
@@ -31,8 +32,9 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         type: "ADD_CART_ITEM",
         payload: {
           id: uuid(),
+          type: product.type,
           product: { ...product.product, extraToppings: [...extraToppings] },
-          quantity: 1,
+          quantity: quantity,
         },
       });
 
@@ -42,8 +44,9 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         type: "ADD_CART_ITEM",
         payload: {
           id: uuid(),
+          type: product.type,
           product: product.product,
-          quantity: 1,
+          quantity: quantity,
         },
       });
       handleClose();
@@ -52,8 +55,9 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         type: "ADD_CART_ITEM",
         payload: {
           id: uuid(),
+          type: product.type,
           product: product.product,
-          quantity: 1,
+          quantity: quantity,
         },
       });
       handleClose();
@@ -87,7 +91,11 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         ) : (
           <></>
         )}
-
+        <input
+          type="number"
+          min={1}
+          onChange={(e) => setQuantity(Number(e.currentTarget.value))}
+        />
         <button onClick={() => handleAddToCart()}>Add to cart</button>
         <button onClick={handleClose}>Close</button>
       </div>
