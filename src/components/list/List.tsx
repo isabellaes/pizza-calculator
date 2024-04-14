@@ -11,7 +11,7 @@ type ListPropsType = {
 };
 
 const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
-  const { state, dispatch } = useContext(CartContext);
+  const { dispatch } = useContext(CartContext);
 
   switch (menu.name) {
     case "Pizza":

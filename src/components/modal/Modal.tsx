@@ -28,15 +28,38 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
 
   function handleAddToCart() {
     if (product.type === "Pizza") {
-      dispatch({
-        type: "ADD_CART_ITEM",
-        payload: {
-          id: uuid(),
-          type: product.type,
-          product: { ...product.product, extraToppings: [...extraToppings] },
-          quantity: quantity,
-        },
-      });
+      if (extraToppings) {
+        const extras = extraToppings.reduce((total, topping) => {
+          return total + topping.price;
+        }, 0);
+        const updatedProductPrice = product.product.price + extras;
+        dispatch({
+          type: "ADD_CART_ITEM",
+          payload: {
+            id: uuid(),
+            type: product.type,
+            product: {
+              ...product.product,
+              extraToppings: [...extraToppings],
+              price: updatedProductPrice,
+            },
+            quantity: quantity,
+          },
+        });
+      } else {
+        dispatch({
+          type: "ADD_CART_ITEM",
+          payload: {
+            id: uuid(),
+            type: product.type,
+            product: {
+              ...product.product,
+              extraToppings: [...extraToppings],
+            },
+            quantity: quantity,
+          },
+        });
+      }
 
       handleClose();
     } else if (product.type === "Burger") {
@@ -64,17 +87,35 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
     }
   }
 
+  function calculateTotal() {
+    if (extraToppings) {
+      const extras = extraToppings.reduce((total, topping) => {
+        return total + topping.price;
+      }, 0);
+      const updatedProductPrice = product.product.price + extras;
+      return updatedProductPrice * quantity;
+    }
+    return product.product.price * quantity;
+  }
+
   return (
     <div className="modal">
       <div className="content">
-        <h2>{product.product.name}</h2>
-        <p>{product.product.ingredients.join(", ")}</p>
+        <div className="row">
+          <div>
+            <h2>{product.product.name}</h2>
+            <p>{product.product.ingredients.join(", ")}</p>
+          </div>
+          <p>${product.product.price}</p>
+        </div>
+
         {extraToppings.map((e) => (
           <p>{e.name}</p>
         ))}
-        <p>{product.product.price}</p>
+
         {product.type === "Pizza" ? (
           <div>
+            <h3>Add extra toppings</h3>
             {toppings.map((t) => (
               <label htmlFor={t.id.toString()}>
                 <input
@@ -84,20 +125,33 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
                   id={t.id.toString()}
                   onChange={(e) => handleSelectExtraToppings(e)}
                 />
-                {t.name} {t.price}
+                {t.name} ${t.price}
               </label>
             ))}
           </div>
         ) : (
           <></>
         )}
-        <input
-          type="number"
-          min={1}
-          onChange={(e) => setQuantity(Number(e.currentTarget.value))}
-        />
-        <button onClick={() => handleAddToCart()}>Add to cart</button>
-        <button onClick={handleClose}>Close</button>
+        <div className="row">
+          <label htmlFor="quantity">
+            Quantity:
+            <input
+              id="quantity"
+              type="number"
+              min={1}
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.currentTarget.value))}
+            />
+          </label>
+          <h3>Total: ${calculateTotal()}</h3>
+        </div>
+
+        <div className="row">
+          <button className="remove-button" onClick={handleClose}>
+            Close
+          </button>
+          <button onClick={() => handleAddToCart()}>Add to cart</button>
+        </div>
       </div>
     </div>
   );

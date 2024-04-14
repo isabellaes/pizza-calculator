@@ -10,11 +10,55 @@
   justify-content: center;
 
   .content {
-    outline: 4px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     width: fit-content;
     min-height: 40vh;
     background-color: white;
-    padding: 2em;
     margin: 1em;
+    padding: 1.5em;
+    outline: 2px solid orange;
+    border: 2px solid red;
+    border-radius: 10px;
+
+    input,
+    label {
+      margin-right: 0.5em;
+    }
+
+    button {
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1em;
+      width: 8em;
+      text-decoration: none;
+      border: 1px solid orange;
+      outline: 1px solid orange;
+      background-color: #fac55b;
+
+      &.remove-button {
+        padding-left: 1em;
+        color: red;
+        background-color: white;
+      }
+    }
+    input[type="number"] {
+      width: 3em;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      justify-content: space-between;
+    }
   }
 }
