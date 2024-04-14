@@ -100,6 +100,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
                       type: "ADD_CART_ITEM",
                       payload: {
                         id: uuid(),
+                        type: "Soda",
                         product: i,
                         quantity: 1,
                       },
@@ -127,6 +128,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
                       type: "ADD_CART_ITEM",
                       payload: {
                         id: uuid(),
+                        type: "Side",
                         product: i,
                         quantity: 1,
                       },

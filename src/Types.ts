@@ -29,11 +29,25 @@ export type MenuItem =
       items: Side[];
     };
 
-export type CartItem = {
-  id: string;
-  product: Pizza | Salad | Burger | Soda | Side;
-  quantity: number;
-};
+export type CartItem =
+  | {
+      id: string;
+      type: "Pizza" | "Salad" | "Burger";
+      product: Pizza | Burger | Salad;
+      quantity: number;
+    }
+  | {
+      id: string;
+      type: "Soda";
+      product: Soda;
+      quantity: number;
+    }
+  | {
+      id: string;
+      type: "Side";
+      product: Side;
+      quantity: number;
+    };
 
 export type Pizza = {
   id: number;
