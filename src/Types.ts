@@ -5,7 +5,12 @@ export type Action =
   | {
       type: "UPDATE_CART_ITEM";
       payload: string;
-    };
+    }
+  | {
+      type: "INCREASE_QUANTITY";
+      payload: string;
+    }
+  | { type: "DECREASE_QUANTITY"; payload: string };
 
 export type MenuItem =
   | {
