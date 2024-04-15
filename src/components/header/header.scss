@@ -1,9 +1,7 @@
 header {
   margin: 0;
   padding: 1em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include FlexRowCenter;
   justify-content: space-between;
   gap: 10px;
   max-width: 100vw;

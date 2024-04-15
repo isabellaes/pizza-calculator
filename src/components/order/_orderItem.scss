@@ -8,10 +8,8 @@
     font-weight: 200;
   }
   .update-cartitem-btn {
-    display: flex;
-    flex-direction: row;
+    @include FlexRowCenter;
     margin-top: 1em;
-    align-items: center;
 
     button {
       border: none;

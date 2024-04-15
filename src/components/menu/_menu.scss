@@ -1,8 +1,7 @@
 .menu {
   ul {
     list-style-type: none;
-    display: flex;
-    flex-direction: row;
+    @include FlexRowCenter;
     gap: 10px;
 
     li {
