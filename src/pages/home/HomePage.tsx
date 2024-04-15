@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { MenuContext } from "../../context/MenuContextProvider";
-import Menu from "../../components/menu/Menu";
 import List from "../../components/list/List";
 import { Product } from "../../Types";
 import Modal from "../../components/modal/Modal";
@@ -15,7 +14,19 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <Menu menu={state} onSelect={setSelectedMenu}></Menu>
+      <div className="menu">
+        <ul>
+          {state.map((m) => (
+            <li
+              key={m.name}
+              onClick={() => setSelectedMenu(m)}
+              className={selectedMenu.name === m.name ? "active" : ""}
+            >
+              <h2>{m.name}</h2>
+            </li>
+          ))}
+        </ul>
+      </div>
       <Container>
         <List
           menu={selectedMenu}

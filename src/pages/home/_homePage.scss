@@ -11,10 +11,28 @@
   line-height: 1.5;
   font-weight: 400;
 
-  .content {
-    padding: 1.5em;
-    outline: 2px solid $orange;
-    border: 2px solid $red;
-    border-radius: 10px;
+  .menu {
+    ul {
+      list-style-type: none;
+      @include FlexRowCenter;
+      gap: 10px;
+
+      li {
+        font-weight: 400;
+        font-family: $fontRegular;
+        line-height: 1.5;
+        font-weight: 700;
+        padding: 0.5em;
+        transition: background-color ease-in 0.2s;
+
+        &.active {
+          background-color: $orange-light;
+        }
+      }
+
+      li:hover {
+        background-color: $orange-light;
+      }
+    }
   }
 }

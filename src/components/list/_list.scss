@@ -17,6 +17,10 @@ ul {
 
     button {
       @include Button;
+      transition: background-color ease-in 0.2s;
+    }
+    button:hover {
+      background-color: $orange;
     }
 
     .row {
