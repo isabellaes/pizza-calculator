@@ -110,7 +110,7 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         </div>
 
         {extraToppings.map((e) => (
-          <p>{e.name}</p>
+          <p className="extra-toppings">- {e.name}</p>
         ))}
 
         {product.type === "Pizza" ? (

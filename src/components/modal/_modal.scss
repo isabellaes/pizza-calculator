@@ -26,6 +26,9 @@
     label {
       margin-right: 0.5em;
     }
+    .extra-toppings {
+      font-weight: 200;
+    }
 
     button {
       border-radius: 5px;
@@ -57,7 +60,7 @@
       flex-direction: row;
       align-items: center;
       margin-top: 1em;
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
       justify-content: space-between;
     }
   }
