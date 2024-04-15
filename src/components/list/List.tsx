@@ -16,7 +16,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
   switch (menu.name) {
     case "Pizza":
       return (
-        <ul className="content">
+        <ul>
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
@@ -118,7 +118,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
-                <h3> {i.flavour}</h3>
+                <h3> {i.name}</h3>
                 <div className="row">
                   <p>${i.price}</p>
                   <button
@@ -148,7 +148,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
-                <h3>{i.type}</h3>
+                <h3>{i.name}</h3>
                 <div className="row">
                   <p>${i.price}</p>
                   <button

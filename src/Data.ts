@@ -74,7 +74,7 @@ const burgers: Burger[] = [
 const sides: Side[] = [
   {
     id: 1,
-    type: "Fries",
+    name: "Fries",
     price: 4,
   },
   // Add more sides here if needed
@@ -84,7 +84,7 @@ const sides: Side[] = [
 export const sodas: Soda[] = [
   {
     id: 1,
-    flavour: "Cola",
+    name: "Cola",
     size: "33cl",
     price: 2,
   },

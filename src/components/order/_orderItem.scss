@@ -1,0 +1,33 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.699);
+  .extra-toppings {
+    font-weight: 200;
+  }
+  .update-cartitem-btn {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    align-items: center;
+
+    button {
+      border: none;
+      background-color: inherit;
+      padding-top: 1em;
+      cursor: pointer;
+
+      &.remove-button {
+        padding-left: 1em;
+        color: red;
+      }
+    }
+    p {
+      padding: 1.5em 1em 1em 1em;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+}

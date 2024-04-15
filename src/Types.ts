@@ -93,13 +93,13 @@ export type Burger = {
 
 export type Side = {
   id: number;
-  type: "Fries";
+  name: "Fries";
   price: number;
 };
 
 export type Soda = {
   id: number;
-  flavour: string;
+  name: string;
   size: "33cl";
   price: number;
 };

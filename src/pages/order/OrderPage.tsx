@@ -1,9 +1,8 @@
 import { CartContext } from "../../context/CartContextProvider";
 import { useContext } from "react";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { calculateTotal } from "../../utils/functions";
+import OrderItem from "../../components/order/OrderItem";
+import Container from "../../components/container/Container";
 
 const OrderPage = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -38,130 +37,27 @@ const OrderPage = () => {
   return (
     <div className="order-container">
       {state.length > 0 ? (
-        <div className="content">
-          {state.map((i) => {
-            switch (i.type) {
-              case "Soda":
-                return (
-                  <div className="item">
-                    <div>
-                      <h2>{i.product.flavour}</h2>
-                      <p>${i.product.price}</p>
-                    </div>
-                    <div className="update-cartitem-btn">
-                      <button onClick={() => handleDecreseQuantity(i.id)}>
-                        <RemoveCircleOutlineIcon></RemoveCircleOutlineIcon>
-                      </button>
-                      <p className="item-quantity"> {i.quantity}</p>
-                      <button onClick={() => handleIncreaseQuantity(i.id)}>
-                        <AddCircleOutlineIcon></AddCircleOutlineIcon>
-                      </button>
-                      <button
-                        className="remove-button"
-                        onClick={() => handleRemoveCartItem(i.id)}
-                      >
-                        <DeleteForeverIcon></DeleteForeverIcon>
-                      </button>
-                    </div>
-                  </div>
-                );
-              case "Side":
-                return (
-                  <div className="item">
-                    <div>
-                      <h2>{i.product.type}</h2>
-                      <p>${i.product.price}</p>
-                    </div>
+        <Container>
+          {state.map((item) => (
+            <OrderItem
+              cartItem={item}
+              handleIncreseQuantity={handleIncreaseQuantity}
+              handleDecreseQuantity={handleDecreseQuantity}
+              handleRemoveCartItem={handleRemoveCartItem}
+            />
+          ))}
 
-                    <div className="update-cartitem-btn">
-                      <button onClick={() => handleDecreseQuantity(i.id)}>
-                        <RemoveCircleOutlineIcon></RemoveCircleOutlineIcon>
-                      </button>
-                      <p className="item-quantity"> {i.quantity}</p>
-                      <button onClick={() => handleIncreaseQuantity(i.id)}>
-                        <AddCircleOutlineIcon></AddCircleOutlineIcon>
-                      </button>
-                      <button
-                        className="remove-button"
-                        onClick={() => handleRemoveCartItem(i.id)}
-                      >
-                        <DeleteForeverIcon></DeleteForeverIcon>
-                      </button>
-                    </div>
-                  </div>
-                );
-
-              case "Pizza":
-                return (
-                  <div className="item">
-                    <div>
-                      <h2>{i.product.name}</h2>
-                      <p>{i.product.ingredients.join(", ")}</p>
-                      {i.product.extraToppings.map((t) => (
-                        <p className="extra-toppings">- {t.name}</p>
-                      ))}
-                      <p>${i.product.price * i.quantity}</p>
-                    </div>
-
-                    <div className="update-cartitem-btn">
-                      <button onClick={() => handleDecreseQuantity(i.id)}>
-                        <RemoveCircleOutlineIcon></RemoveCircleOutlineIcon>
-                      </button>
-                      <p className="item-quantity"> {i.quantity}</p>
-                      <button onClick={() => handleIncreaseQuantity(i.id)}>
-                        <AddCircleOutlineIcon></AddCircleOutlineIcon>
-                      </button>
-                      <button
-                        className="remove-button"
-                        onClick={() => handleRemoveCartItem(i.id)}
-                      >
-                        <DeleteForeverIcon></DeleteForeverIcon>
-                      </button>
-                    </div>
-                  </div>
-                );
-              case "Salad":
-              case "Burger":
-                return (
-                  <div className="item">
-                    <div>
-                      <h2>{i.product.name}</h2>
-                      <p>{i.product.ingredients.join(", ")}</p>
-                      <p>${i.product.price}</p>
-                    </div>
-
-                    <div className="update-cartitem-btn">
-                      <button onClick={() => handleDecreseQuantity(i.id)}>
-                        <RemoveCircleOutlineIcon></RemoveCircleOutlineIcon>
-                      </button>
-                      <p className="item-quantity"> {i.quantity}</p>
-                      <button onClick={() => handleIncreaseQuantity(i.id)}>
-                        <AddCircleOutlineIcon></AddCircleOutlineIcon>
-                      </button>
-                      <button
-                        className="remove-button"
-                        onClick={() => handleRemoveCartItem(i.id)}
-                      >
-                        <DeleteForeverIcon></DeleteForeverIcon>
-                      </button>
-                    </div>
-                  </div>
-                );
-            }
-          })}
-          <div>
-            <div className="total-price">
-              <h2>Total:</h2>
-              <h2>${total}</h2>
-            </div>
-            <div className="dual-buttons">
-              <button className="clear" onClick={handleClearCart}>
-                Clear Cart
-              </button>
-              <button className="checkout"> Checkout </button>
-            </div>
+          <div className="total-price">
+            <h2>Total:</h2>
+            <h2>${total}</h2>
           </div>
-        </div>
+          <div className="dual-buttons">
+            <button className="clear" onClick={handleClearCart}>
+              Clear Cart
+            </button>
+            <button className="checkout"> Checkout </button>
+          </div>
+        </Container>
       ) : (
         <>
           <h1>You´re cart is empty</h1>

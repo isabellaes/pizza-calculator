@@ -11,83 +11,42 @@
   line-height: 1.5;
   font-weight: 400;
 
-  .content {
-    padding: 1.5em;
-    outline: 2px solid orange;
-    border: 2px solid red;
-    border-radius: 10px;
+  .total-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+  }
 
-    .item {
+  .dual-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+
+    button {
+      background-color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      padding: 10px;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 1em;
-      border-bottom: 1px solid rgba(255, 0, 0, 0.699);
-      .extra-toppings {
-        font-weight: 200;
-      }
-      .update-cartitem-btn {
-        display: flex;
-        flex-direction: row;
-        margin-top: 1em;
-        align-items: center;
-
-        button {
-          border: none;
-          background-color: inherit;
-          padding-top: 1em;
-          cursor: pointer;
-
-          &.remove-button {
-            padding-left: 1em;
-            color: red;
-          }
-        }
-        p {
-          padding: 1.5em 1em 1em 1em;
-          font-size: 18px;
-          text-align: center;
-        }
-      }
-    }
-
-    .total-price {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 1em;
-    }
-
-    .dual-buttons {
-      display: flex;
-      flex-direction: row;
       align-items: center;
-      justify-content: space-between;
-      padding: 1em;
+      justify-content: center;
+      margin: 1em;
+      width: 8em;
+      text-decoration: none;
+      border: 1px solid orange;
 
-      button {
-        background-color: #fff;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 1em;
-        width: 8em;
-        text-decoration: none;
-        border: 1px solid orange;
+      &.clear {
+        outline: 1px solid red;
+        border: 1px solid red;
+      }
 
-        &.clear {
-          outline: 1px solid red;
-          border: 1px solid red;
-        }
-
-        &.checkout {
-          outline: 1px solid orange;
-          background-color: #fac55b;
-        }
+      &.checkout {
+        outline: 1px solid orange;
+        background-color: #fac55b;
       }
     }
   }
