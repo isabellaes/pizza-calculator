@@ -7,7 +7,7 @@ import uuid from "react-uuid";
 type ListPropsType = {
   menu: MenuItem;
   setSelected: React.Dispatch<React.SetStateAction<Product>>;
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalOpen: () => void;
 };
 
 const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
@@ -34,7 +34,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
                         toppings: toppings,
                         soda: sodas,
                       });
-                      setModalOpen(true);
+                      setModalOpen();
                     }}
                   >
                     Add to cart

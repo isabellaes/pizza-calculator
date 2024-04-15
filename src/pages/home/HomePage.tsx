@@ -4,12 +4,13 @@ import Menu from "../../components/menu/Menu";
 import List from "../../components/list/List";
 import { Product } from "../../Types";
 import Modal from "../../components/modal/Modal";
+import { useToggleModal } from "../../hooks/useToggleModal";
 
 const HomePage = () => {
   const { state } = useContext(MenuContext);
   const [selectedMenu, setSelectedMenu] = useState(state[0]);
   const [selectedProduct, setSelectedProduct] = useState({} as Product);
-  const [modalOpen, setModalOpen] = useState(false);
+  const { open, setModalOpen, setModalClosed } = useToggleModal();
 
   return (
     <div className="home-container">
@@ -19,9 +20,9 @@ const HomePage = () => {
         setSelected={setSelectedProduct}
         setModalOpen={setModalOpen}
       ></List>
-      {modalOpen ? (
+      {open ? (
         <Modal
-          handleClose={() => setModalOpen(false)}
+          handleClose={() => setModalClosed()}
           product={selectedProduct}
         ></Modal>
       ) : (

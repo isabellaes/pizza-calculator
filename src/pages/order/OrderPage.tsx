@@ -3,6 +3,7 @@ import { useContext } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { calculateTotal } from "../../utils/functions";
 
 const OrderPage = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -11,12 +12,6 @@ const OrderPage = () => {
     dispatch({
       type: "CLEAR_CART",
     });
-  }
-
-  function calculateTotal(): number {
-    return state.reduce((total, cartItem) => {
-      return total + cartItem.product.price * cartItem.quantity;
-    }, 0);
   }
 
   function handleIncreaseQuantity(id: string) {
@@ -38,7 +33,7 @@ const OrderPage = () => {
       payload: id,
     });
   }
-  const total = calculateTotal();
+  const total = calculateTotal(state);
 
   return (
     <div className="order-container">
