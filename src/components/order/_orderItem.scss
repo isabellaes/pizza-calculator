@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 1em;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.699);
+  border-bottom: 1px solid $red-light;
   .extra-toppings {
     font-weight: 200;
   }
@@ -19,7 +19,7 @@
 
       &.remove-button {
         padding-left: 1em;
-        color: red;
+        color: $red;
       }
     }
     p {

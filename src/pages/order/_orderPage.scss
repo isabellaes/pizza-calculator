@@ -19,14 +19,12 @@
   }
 
   .dual-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include FlexRowCenter;
     justify-content: space-between;
     padding: 1em;
 
     button {
-      background-color: #fff;
+      background-color: $white;
       border-radius: 5px;
       cursor: pointer;
       outline: none;
@@ -37,16 +35,16 @@
       margin: 1em;
       width: 8em;
       text-decoration: none;
-      border: 1px solid orange;
+      border: 1px solid $orange;
 
       &.clear {
-        outline: 1px solid red;
-        border: 1px solid red;
+        outline: 1px solid $red;
+        border: 1px solid $red;
       }
 
       &.checkout {
-        outline: 1px solid orange;
-        background-color: #fac55b;
+        outline: 1px solid $orange;
+        background-color: $orange-light;
       }
     }
   }

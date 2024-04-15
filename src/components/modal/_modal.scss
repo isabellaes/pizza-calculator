@@ -15,7 +15,7 @@
     align-items: stretch;
     width: fit-content;
     min-height: 40vh;
-    background-color: white;
+    background-color: $white;
     @include ContainerStyle;
 
     input,

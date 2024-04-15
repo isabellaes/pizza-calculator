@@ -5,7 +5,7 @@ ul {
   list-style-type: none;
   &.list {
     li:not(:last-child) {
-      border-bottom: 1px solid rgba(255, 0, 0, 0.699);
+      border-bottom: 1px solid $red-light;
     }
   }
 

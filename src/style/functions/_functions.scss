@@ -9,22 +9,22 @@
   margin: 1em;
   width: 8em;
   text-decoration: none;
-  border: 1px solid orange;
-  outline: 1px solid orange;
-  background-color: #fac55b;
+  border: 1px solid $orange;
+  outline: 1px solid $orange;
+  background-color: $orange-light;
 
   &.remove-button {
     padding-left: 1em;
-    color: red;
-    background-color: white;
+    color: $red;
+    background-color: $white;
   }
 }
 
 @mixin ContainerStyle() {
   margin: 1em;
   padding: 1.5em;
-  outline: 2px solid orange;
-  border: 2px solid red;
+  outline: 2px solid $orange;
+  border: 2px solid $red;
   border-radius: 10px;
 }
 
