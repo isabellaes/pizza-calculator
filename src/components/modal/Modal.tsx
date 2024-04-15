@@ -27,64 +27,44 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
   }
 
   function handleAddToCart() {
-    if (product.type === "Pizza") {
-      if (extraToppings) {
-        const extras = extraToppings.reduce((total, topping) => {
-          return total + topping.price;
-        }, 0);
-        const updatedProductPrice = product.product.price + extras;
-        dispatch({
-          type: "ADD_CART_ITEM",
-          payload: {
-            id: uuid(),
-            type: product.type,
-            product: {
-              ...product.product,
-              extraToppings: [...extraToppings],
-              price: updatedProductPrice,
-            },
-            quantity: quantity,
-          },
-        });
-      } else {
-        dispatch({
-          type: "ADD_CART_ITEM",
-          payload: {
-            id: uuid(),
-            type: product.type,
-            product: {
-              ...product.product,
-              extraToppings: [...extraToppings],
-            },
-            quantity: quantity,
-          },
-        });
-      }
-
-      handleClose();
-    } else if (product.type === "Burger") {
+    if (product.type === "Pizza" && extraToppings) {
+      const extras = extraToppings.reduce((total, topping) => {
+        return total + topping.price;
+      }, 0);
+      const updatedProductPrice = product.product.price + extras;
       dispatch({
         type: "ADD_CART_ITEM",
         payload: {
           id: uuid(),
-          type: product.type,
-          product: product.product,
+          product: {
+            type: product.type,
+            product: {
+              id: product.product.id,
+              ingredients: product.product.ingredients,
+              extraToppings: [...extraToppings],
+              price: updatedProductPrice,
+              category: product.product.category,
+              name: product.product.name,
+              size: product.product.size,
+            },
+          },
           quantity: quantity,
         },
       });
-      handleClose();
     } else {
       dispatch({
         type: "ADD_CART_ITEM",
         payload: {
           id: uuid(),
-          type: product.type,
-          product: product.product,
+          product: {
+            ...product,
+          },
           quantity: quantity,
         },
       });
-      handleClose();
     }
+
+    handleClose();
   }
 
   function calculateTotal() {
@@ -104,7 +84,13 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         <div className="row">
           <div>
             <h2>{product.product.name}</h2>
-            <p>{product.product.ingredients.join(", ")}</p>
+            {product.type === "Pizza" ||
+            product.type === "Burger" ||
+            product.type === "Salad" ? (
+              <p>{product.product.ingredients.join(", ")}</p>
+            ) : (
+              <></>
+            )}
           </div>
           <p>${product.product.price}</p>
         </div>

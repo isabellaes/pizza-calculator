@@ -1,178 +1,39 @@
-import { MenuItem, Product } from "../../Types";
-import { CartContext } from "../../context/CartContextProvider";
-import { useContext } from "react";
-import uuid from "react-uuid";
+import { Product } from "../../Types";
 
 type ListPropsType = {
-  menu: MenuItem;
+  products: Product[];
   setSelected: React.Dispatch<React.SetStateAction<Product>>;
   setModalOpen: () => void;
 };
 
-const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
-  const { dispatch } = useContext(CartContext);
-
-  switch (menu.name) {
-    case "Pizza":
-      return (
-        <ul className="list">
-          {menu.items.map((i) => (
-            <li key={i.id}>
-              <div className="list-item">
-                <div>
-                  <h3>{i.name}</h3>
-                  <p>{i.ingredients.join(", ")}</p>
-                </div>
-                <div className="row">
-                  <p>${i.price}</p>
-                  <button
-                    onClick={() => {
-                      setSelected({
-                        type: "Pizza",
-                        product: i,
-                      });
-                      setModalOpen();
-                    }}
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      );
-
-    case "Burger":
-      return (
-        <ul className="list">
-          {menu.items.map((i) => (
-            <li key={i.id}>
-              <div className="list-item">
-                <div>
-                  <h3>{i.name}</h3>
-                  <p>{i.ingredients.join(", ")}</p>
-                </div>
-                <div className="row">
-                  <p>${i.price}</p>
-                  <button
-                    onClick={() =>
-                      dispatch({
-                        type: "ADD_CART_ITEM",
-                        payload: {
-                          id: uuid(),
-                          type: "Burger",
-                          product: i,
-                          quantity: 1,
-                        },
-                      })
-                    }
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      );
-    case "Salad":
-      return (
-        <ul className="list">
-          {menu.items.map((i) => (
-            <li key={i.id}>
-              <div className="list-item">
-                <div>
-                  <h3>{i.name}</h3>
-                  <p>{i.ingredients.join(", ")}</p>
-                </div>
-                <div className="row">
-                  <p>${i.price}</p>
-                  <button
-                    onClick={() =>
-                      dispatch({
-                        type: "ADD_CART_ITEM",
-                        payload: {
-                          id: uuid(),
-                          type: "Salad",
-                          product: i,
-                          quantity: 1,
-                        },
-                      })
-                    }
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      );
-    case "Soda":
-      return (
-        <ul className="list">
-          {menu.items.map((i) => (
-            <li key={i.id}>
-              <div className="list-item">
-                <h3> {i.name}</h3>
-                <div className="row">
-                  <p>${i.price}</p>
-                  <button
-                    onClick={() =>
-                      dispatch({
-                        type: "ADD_CART_ITEM",
-                        payload: {
-                          id: uuid(),
-                          type: "Soda",
-                          product: i,
-                          quantity: 1,
-                        },
-                      })
-                    }
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      );
-    case "Sides":
-      return (
-        <ul className="list">
-          {menu.items.map((i) => (
-            <li key={i.id}>
-              <div className="list-item">
-                <h3>{i.name}</h3>
-                <div className="row">
-                  <p>${i.price}</p>
-                  <button
-                    onClick={() =>
-                      dispatch({
-                        type: "ADD_CART_ITEM",
-                        payload: {
-                          id: uuid(),
-                          type: "Side",
-                          product: i,
-                          quantity: 1,
-                        },
-                      })
-                    }
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      );
-
-    default:
-      break;
-  }
+const List = ({ products, setSelected, setModalOpen }: ListPropsType) => {
+  return (
+    <ul className="list">
+      {products.map((p) => (
+        <li className="list-item" key={p.product.id}>
+          <div>
+            <h3>{p.product.name}</h3>
+            {p.type === "Pizza" || p.type === "Burger" || p.type === "Salad" ? (
+              <p>{p.product.ingredients.join(", ")}</p>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="row">
+            <p>${p.product.price}</p>
+            <button
+              onClick={() => {
+                setSelected(p);
+                setModalOpen();
+              }}
+            >
+              Add to cart
+            </button>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default List;

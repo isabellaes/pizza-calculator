@@ -19,25 +19,25 @@ const OrderItem = ({
   return (
     <div className="item">
       <div>
-        <h2>{cartItem.product.name}</h2>
-        {cartItem.type === "Salad" ||
-        cartItem.type === "Burger" ||
-        cartItem.type === "Pizza" ? (
-          <>{cartItem.product.ingredients.join(", ")}</>
+        <h2>{cartItem.product.product.name}</h2>
+        {cartItem.product.type === "Salad" ||
+        cartItem.product.type === "Burger" ||
+        cartItem.product.type === "Pizza" ? (
+          <>{cartItem.product.product.ingredients.join(", ")}</>
         ) : (
           <></>
         )}
-        {cartItem.type === "Pizza" ? (
+        {cartItem.product.type === "Pizza" ? (
           <>
             {" "}
-            {cartItem.product.extraToppings.map((t) => (
+            {cartItem.product.product.extraToppings.map((t) => (
               <p className="extra-toppings">- {t.name}</p>
             ))}
           </>
         ) : (
           <></>
         )}
-        <p>${cartItem.product.price * cartItem.quantity}</p>
+        <p>${cartItem.product.product.price * cartItem.quantity}</p>
       </div>
       <div className="update-cartitem-btn">
         <button onClick={() => handleDecreseQuantity(cartItem.id)}>

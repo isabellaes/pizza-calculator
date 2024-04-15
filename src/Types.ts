@@ -12,96 +12,10 @@ export type Action =
     }
   | { type: "DECREASE_QUANTITY"; payload: string };
 
-export type MenuItem =
-  | {
-      name: "Pizza";
-      items: Pizza[];
-    }
-  | {
-      name: "Burger";
-      items: Burger[];
-    }
-  | {
-      name: "Salad";
-      items: Salad[];
-    }
-  | {
-      name: "Soda";
-      items: Soda[];
-    }
-  | {
-      name: "Sides";
-      items: Side[];
-    };
-
-export type CartItem =
-  | {
-      id: string;
-      type: "Salad";
-      product: Salad;
-      quantity: number;
-    }
-  | {
-      id: string;
-      type: "Burger";
-      product: Burger;
-      quantity: number;
-    }
-  | {
-      id: string;
-      type: "Pizza";
-      product: Pizza;
-      quantity: number;
-    }
-  | {
-      id: string;
-      type: "Soda";
-      product: Soda;
-      quantity: number;
-    }
-  | {
-      id: string;
-      type: "Side";
-      product: Side;
-      quantity: number;
-    };
-
-export type Pizza = {
-  id: number;
-  name: string;
-  category: "Vego" | "Pizza";
-  ingredients: string[];
-  extraToppings: PizzaTopping[];
-  price: number;
-  size: "standard" | "barn" | "familj";
-};
-export type Salad = {
-  id: number;
-  name: string;
-  category: "Vego" | "Chicken" | "Kebab";
-  ingredients: string[];
-  price: number;
-};
-export type Burger = {
-  id: number;
-  name: string;
-  category: "Vego" | "Chicken" | "Meat";
-  ingredients: string[];
-  price: number;
-  size: "90g" | "150g";
-};
-
-export type Side = {
-  id: number;
-  name: "Fries";
-  price: number;
-};
-
-export type Soda = {
-  id: number;
-  name: string;
-  size: "33cl";
-  price: number;
+export type CartItem = {
+  id: string;
+  product: Product;
+  quantity: number;
 };
 
 export type PizzaTopping = {
@@ -113,13 +27,51 @@ export type PizzaTopping = {
 export type Product =
   | {
       type: "Pizza";
-      product: Pizza;
+      product: {
+        id: number;
+        name: string;
+        category: "Vego" | "Pizza";
+        ingredients: string[];
+        extraToppings: PizzaTopping[];
+        price: number;
+        size: "standard" | "barn" | "familj";
+      };
     }
   | {
       type: "Salad";
-      product: Salad;
+      product: {
+        id: number;
+        name: string;
+        category: "Vego" | "Chicken" | "Kebab";
+        ingredients: string[];
+        price: number;
+      };
     }
   | {
       type: "Burger";
-      product: Burger;
+      product: {
+        id: number;
+        name: string;
+        category: "Vego" | "Chicken" | "Meat";
+        ingredients: string[];
+        price: number;
+        size: "90g" | "150g";
+      };
+    }
+  | {
+      type: "Side";
+      product: {
+        id: number;
+        name: string;
+        price: number;
+      };
+    }
+  | {
+      type: "Soda";
+      product: {
+        id: number;
+        name: string;
+        size: "33cl";
+        price: number;
+      };
     };

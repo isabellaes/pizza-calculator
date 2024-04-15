@@ -1,15 +1,15 @@
 import { ReactNode, createContext, useContext } from "react";
-import { MenuItem } from "../Types";
+import { Product } from "../Types";
 
-import { menu } from "../Data";
+import { products } from "../Data";
 export type ContextProviderType = {
   children: ReactNode;
 };
 export type InitialContextValue = {
-  state: MenuItem[];
+  state: Product[];
 };
 export const MenuContext = createContext<InitialContextValue>({
-  state: menu,
+  state: products,
 });
 
 const MenuContextProvider = ({ children }: ContextProviderType) => {
