@@ -73,7 +73,7 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         },
       });
       handleClose();
-    } else if (product.type === "Salad") {
+    } else {
       dispatch({
         type: "ADD_CART_ITEM",
         payload: {

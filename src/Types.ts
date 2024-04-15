@@ -114,16 +114,12 @@ export type Product =
   | {
       type: "Pizza";
       product: Pizza;
-      toppings: PizzaTopping[];
-      soda: Soda[];
     }
   | {
       type: "Salad";
       product: Salad;
-      soda: Soda[];
     }
   | {
       type: "Burger";
       product: Burger;
-      soda: Soda[];
     };

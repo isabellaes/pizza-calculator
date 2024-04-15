@@ -1,5 +1,4 @@
 import { MenuItem, Product } from "../../Types";
-import { toppings, sodas } from "../../Data";
 import { CartContext } from "../../context/CartContextProvider";
 import { useContext } from "react";
 import uuid from "react-uuid";
@@ -16,7 +15,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
   switch (menu.name) {
     case "Pizza":
       return (
-        <ul>
+        <ul className="list">
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
@@ -31,8 +30,6 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
                       setSelected({
                         type: "Pizza",
                         product: i,
-                        toppings: toppings,
-                        soda: sodas,
                       });
                       setModalOpen();
                     }}
@@ -48,7 +45,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
 
     case "Burger":
       return (
-        <ul className="content">
+        <ul className="list">
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
@@ -81,7 +78,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
       );
     case "Salad":
       return (
-        <ul className="content">
+        <ul className="list">
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
@@ -114,7 +111,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
       );
     case "Soda":
       return (
-        <ul className="content">
+        <ul className="list">
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">
@@ -144,7 +141,7 @@ const List = ({ menu, setSelected, setModalOpen }: ListPropsType) => {
       );
     case "Sides":
       return (
-        <ul className="content">
+        <ul className="list">
           {menu.items.map((i) => (
             <li key={i.id}>
               <div className="list-item">

@@ -5,6 +5,7 @@ import List from "../../components/list/List";
 import { Product } from "../../Types";
 import Modal from "../../components/modal/Modal";
 import { useToggleModal } from "../../hooks/useToggleModal";
+import Container from "../../components/container/Container";
 
 const HomePage = () => {
   const { state } = useContext(MenuContext);
@@ -15,11 +16,13 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <Menu menu={state} onSelect={setSelectedMenu}></Menu>
-      <List
-        menu={selectedMenu}
-        setSelected={setSelectedProduct}
-        setModalOpen={setModalOpen}
-      ></List>
+      <Container>
+        <List
+          menu={selectedMenu}
+          setSelected={setSelectedProduct}
+          setModalOpen={setModalOpen}
+        ></List>
+      </Container>
       {open ? (
         <Modal
           handleClose={() => setModalClosed()}

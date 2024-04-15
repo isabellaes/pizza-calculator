@@ -3,6 +3,11 @@ ul {
   flex-direction: column;
   gap: 10px;
   list-style-type: none;
+  &.list {
+    li:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 0, 0, 0.699);
+    }
+  }
 }
 
 .content {
@@ -19,7 +24,6 @@ ul {
   justify-content: space-between;
   align-items: center;
   padding: 1em;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.699);
   min-width: 50vw;
 
   button {
