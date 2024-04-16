@@ -13,14 +13,17 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
     width: fit-content;
     min-height: 40vh;
     background-color: $white;
     @include ContainerStyle;
+    gap: 0.5em;
 
     input,
     label {
       margin-right: 0.5em;
+      margin-left: 0.5em;
     }
     .extra-toppings {
       font-weight: 200;
@@ -43,9 +46,12 @@
 
     .row {
       @include FlexRowCenter;
-      margin-top: 1em;
-      margin-bottom: 0.5em;
       justify-content: space-between;
+    }
+
+    h2,
+    h3 {
+      margin-bottom: 0.2em;
     }
   }
 }

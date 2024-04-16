@@ -21,7 +21,12 @@ const Header = () => {
       <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
         <h1>PIZZA CALCULATOR</h1>
       </Link>
-      <Badge badgeContent={count} invisible={count < 1}>
+      <Badge
+        badgeContent={count}
+        invisible={count < 1}
+        variant="standard"
+        color="error"
+      >
         <Link to={"/order"}>
           <ShoppingCartIcon
             fontSize="large"
