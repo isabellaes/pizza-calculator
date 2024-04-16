@@ -1,4 +1,4 @@
-import { Action, CartItem } from "../Types";
+import { Action, CartItem } from "../utils/Types";
 
 export const Reducer = (state: CartItem[], action: Action) => {
   switch (action.type) {

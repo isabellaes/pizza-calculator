@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext } from "react";
-import { Product } from "../Types";
+import { Product } from "../utils/Types";
 
-import { products } from "../Data";
+import { products } from "../utils/Data";
 export type ContextProviderType = {
   children: ReactNode;
 };

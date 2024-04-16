@@ -1,14 +1,16 @@
+import { PizzaTopping, Product } from "../../../utils/Types";
+import { toppings } from "../../../utils/Data";
 import { useContext, useState } from "react";
-import { Product, PizzaTopping } from "../../Types";
-import { CartContext } from "../../context/CartContextProvider";
-import { toppings } from "../../Data";
+import { CartContext } from "../../../context/CartContextProvider";
 import uuid from "react-uuid";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-export type ModalPropsType = {
+export type ProductModalPropsType = {
   product: Product;
   handleClose: () => void;
 };
-const Modal = ({ product, handleClose }: ModalPropsType) => {
+
+const ProductModal = ({ product, handleClose }: ProductModalPropsType) => {
   const { dispatch } = useContext(CartContext);
   const [extraToppings, setExtraToppings] = useState<PizzaTopping[]>([]);
   const [quantity, setQuantity] = useState(1);
@@ -63,7 +65,6 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
         },
       });
     }
-
     handleClose();
   }
 
@@ -77,70 +78,63 @@ const Modal = ({ product, handleClose }: ModalPropsType) => {
     }
     return product.product.price * quantity;
   }
-
   return (
-    <div className="modal">
-      <div className="content">
-        <div className="row">
-          <div>
-            <h2>{product.product.name}</h2>
-            {product.type === "Pizza" ||
-            product.type === "Burger" ||
-            product.type === "Salad" ? (
-              <p>{product.product.ingredients.join(", ")}</p>
-            ) : (
-              <></>
-            )}
-          </div>
-          <p>${product.product.price}</p>
+    <div className="product-modal">
+      <div className="row margin-bottom">
+        <div>
+          <h2>{product.product.name}</h2>
+          {product.type === "Pizza" ||
+          product.type === "Burger" ||
+          product.type === "Salad" ? (
+            <p>{product.product.ingredients.join(", ")}</p>
+          ) : (
+            <></>
+          )}
+          {extraToppings.map((e) => (
+            <p className="extra-toppings">- {e.name}</p>
+          ))}
         </div>
+        <p>${product.product.price}</p>
+      </div>
 
-        {extraToppings.map((e) => (
-          <p className="extra-toppings">- {e.name}</p>
-        ))}
-
-        {product.type === "Pizza" ? (
-          <div>
-            <h3>Add extra toppings</h3>
-            {toppings.map((t) => (
-              <label htmlFor={t.id.toString()}>
-                <input
-                  type="checkbox"
-                  value={t.id}
-                  name={t.name}
-                  id={t.id.toString()}
-                  onChange={(e) => handleSelectExtraToppings(e)}
-                />
-                {t.name} ${t.price}
-              </label>
-            ))}
-          </div>
-        ) : (
-          <></>
-        )}
-        <div className="row">
-          <label htmlFor="quantity">
-            Quantity:
-            <input
-              id="quantity"
-              type="number"
-              min={1}
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.currentTarget.value))}
-            />
-          </label>
-          <h3>Total: ${calculateTotal()}</h3>
+      {product.type === "Pizza" ? (
+        <div className="extra-toppings-box margin-bottom">
+          <h3>Add extra toppings</h3>
+          {toppings.map((t) => (
+            <label htmlFor={t.id.toString()}>
+              <input
+                type="checkbox"
+                value={t.id}
+                name={t.name}
+                id={t.id.toString()}
+                onChange={(e) => handleSelectExtraToppings(e)}
+              />
+              {t.name} ${t.price}
+            </label>
+          ))}
         </div>
+      ) : (
+        <></>
+      )}
+      <div className="row">
+        <h3>Total: ${calculateTotal()}</h3>
+        <div className="add-to-cart-buttons">
+          <input
+            className="input-number"
+            id="quantity"
+            type="number"
+            min={1}
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.currentTarget.value))}
+          />
 
-        <div className="row">
-          <button className="remove-button" onClick={handleClose}>
-            Close
+          <button className="add-button" onClick={() => handleAddToCart()}>
+            <AddShoppingCartIcon />
           </button>
-          <button onClick={() => handleAddToCart()}>Add to cart</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default ProductModal;

@@ -1,7 +1,7 @@
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { CartItem } from "../../Types";
+import { CartItem } from "../../utils/Types";
 
 type OrderItemProps = {
   cartItem: CartItem;

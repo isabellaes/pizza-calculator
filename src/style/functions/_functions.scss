@@ -33,3 +33,33 @@
   flex-direction: row;
   align-items: center;
 }
+
+@mixin dual-buttons($width, $color) {
+  .input-number {
+    padding: 4px;
+    border: 1px solid $orange;
+    outline: 1px solid $orange;
+    border-radius: 5px 0 0 5px;
+    width: 3em;
+    height: 3em;
+  }
+  .add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background-color: $color;
+    color: black;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    width: $width;
+    text-decoration: none;
+    border: 1px solid $orange;
+    outline: 1px solid $orange;
+    transition: background-color;
+    height: 3em;
+  }
+  button:hover {
+    background-color: $orange;
+  }
+}

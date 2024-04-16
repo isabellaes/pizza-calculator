@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { MenuContext } from "../../context/MenuContextProvider";
 import List from "../../components/list/List";
-import { Product } from "../../Types";
-import Modal from "../../components/modal/Modal";
+import { Product } from "../../utils/Types";
+import Modal from "../../components/modal/modalcontainer/Modal";
 import { useToggleModal } from "../../hooks/useToggleModal";
 import Container from "../../components/container/Container";
+import ProductModal from "../../components/modal/productModal/ProductModal";
 
 const HomePage = () => {
   const { state } = useContext(MenuContext);
@@ -45,10 +46,12 @@ const HomePage = () => {
         ></List>
       </Container>
       {open ? (
-        <Modal
-          handleClose={() => setModalClosed()}
-          product={selectedProduct}
-        ></Modal>
+        <Modal handleClose={() => setModalClosed()}>
+          <ProductModal
+            product={selectedProduct}
+            handleClose={() => setModalClosed()}
+          ></ProductModal>
+        </Modal>
       ) : (
         <></>
       )}

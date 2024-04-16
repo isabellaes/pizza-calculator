@@ -1,0 +1,40 @@
+.product-modal {
+  min-width: 30vw;
+  .extra-toppings {
+    font-weight: 200;
+  }
+
+  .extra-toppings-box {
+    label,
+    input {
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+    }
+
+    margin: 0.5em;
+  }
+
+  .add-to-cart-buttons {
+    @include FlexRowCenter;
+    justify-content: center;
+    max-width: 200px;
+    margin-top: 1em;
+    max-height: fit-content;
+    @include dual-buttons(6em, $orange-light);
+  }
+
+  .row {
+    @include FlexRowCenter;
+    justify-content: space-between;
+    margin: 0.5em;
+  }
+
+  .margin-bottom {
+    margin-bottom: 1.5em;
+  }
+
+  h2,
+  h3 {
+    margin-bottom: 0.2em;
+  }
+}

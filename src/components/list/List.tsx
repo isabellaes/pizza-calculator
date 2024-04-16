@@ -1,4 +1,4 @@
-import { Product } from "../../Types";
+import { Product } from "../../utils/Types";
 
 type ListPropsType = {
   products: Product[];

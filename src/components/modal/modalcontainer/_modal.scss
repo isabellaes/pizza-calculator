@@ -1,0 +1,42 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.575);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: fit-content;
+    min-height: 40vh;
+    background-color: $white;
+    @include ContainerStyle;
+    gap: 0.5em;
+
+    .modal-button {
+      display: flex;
+      justify-content: right;
+      border-top: 1px solid $red-light;
+      margin-top: 3em;
+
+      button {
+        @include Button;
+        transition: background-color ease-in 0.2s;
+      }
+
+      button:hover {
+        background-color: $orange;
+        &.remove-button {
+          background-color: $red-light;
+        }
+      }
+    }
+  }
+}

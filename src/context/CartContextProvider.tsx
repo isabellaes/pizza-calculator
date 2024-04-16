@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useReducer } from "react";
-import { CartItem, Action } from "../Types";
+import { CartItem, Action } from "../utils/Types";
 import { Reducer } from "./Reducer";
 
 type InitialCartContextValue = {
