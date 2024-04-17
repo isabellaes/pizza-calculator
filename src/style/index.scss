@@ -6,9 +6,9 @@
 @import "../components/container/container";
 @import "../components/order/orderItem";
 @import "../components/list/list";
-@import "../components/modal/modal";
+@import "../components/modal/modalcontainer/modal";
 @import "../pages/order/orderPage";
-@import "../components/modal/productModal";
+@import "../components/modal/productModal/productModal";
 
 * {
   box-sizing: border-box;
