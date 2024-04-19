@@ -9,7 +9,7 @@ Pizza calculator demo
 Clone repository
 
 ```sh
-git clone https://github.com/isabellaes/Webbshop
+git clone https://github.com/isabellaes/pizza-calculator
 ```
 
 Run project
