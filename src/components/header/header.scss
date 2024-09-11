@@ -16,3 +16,16 @@ header {
     max-width: 100px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  header {
+    img {
+      max-width: 40px;
+      max-height: 40px;
+    }
+
+    h1 {
+      font-size: medium;
+    }
+  }
+}

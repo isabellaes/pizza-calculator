@@ -29,7 +29,7 @@ const Header = () => {
       >
         <Link to={"/order"}>
           <ShoppingCartIcon
-            fontSize="large"
+            fontSize="medium"
             style={{ textDecoration: "none", color: "black" }}
           />
         </Link>

@@ -1,3 +1,9 @@
+import { CartItem } from "../../../utils/Types";
+
+type OrderConfirmationModalProps = {
+  items: CartItem[];
+};
+
 const OrderConfirmationModal = () => {
   return (
     <>

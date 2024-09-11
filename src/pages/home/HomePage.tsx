@@ -12,6 +12,7 @@ const HomePage = () => {
   const [selectedMenu, setSelectedMenu] = useState("Pizza");
   const [selectedProduct, setSelectedProduct] = useState({} as Product);
   const { open, setModalOpen, setModalClosed } = useToggleModal();
+  const screen = window.innerWidth;
 
   function extractUniqueTypes(products: Product[]): string[] {
     const typesSet = new Set<string>();
@@ -39,11 +40,19 @@ const HomePage = () => {
         </ul>
       </div>
       <Container>
-        <List
-          products={state.filter((p) => p.type === selectedMenu)}
-          setSelected={setSelectedProduct}
-          setModalOpen={setModalOpen}
-        ></List>
+        {screen > 600 ? (
+          <List
+            products={state.filter((p) => p.type === selectedMenu)}
+            setSelected={setSelectedProduct}
+            setModalOpen={setModalOpen}
+          ></List>
+        ) : (
+          <List
+            products={state}
+            setSelected={setSelectedProduct}
+            setModalOpen={setModalOpen}
+          ></List>
+        )}
       </Container>
       {open ? (
         <Modal handleClose={() => setModalClosed()}>
